@@ -1,0 +1,109 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_app_cubit_friflex_test_task/cubit/weather_cubit.dart';
+
+class CityEntryWidget extends StatefulWidget {
+  const CityEntryWidget({Key? key, required this.callBackFunction})
+      : super(key: key);
+
+  final Function callBackFunction;
+
+  @override
+  _CityEntryWidgetState createState() => _CityEntryWidgetState();
+}
+
+class _CityEntryWidgetState extends State<CityEntryWidget> {
+  late TextEditingController cityEditController;
+  bool isVisible = true;
+  bool notPressed = false;
+  bool pressed = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    cityEditController = TextEditingController();
+  }
+
+  void submitCityName(BuildContext context, String cityName) {
+    BlocProvider.of<WeatherCubit>(context).getWeather(cityName, false);
+    widget.callBackFunction();
+    cityEditController.text = '';
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        if (isVisible)
+          Container(
+              margin: const EdgeInsets.only(left: 10, top: 15, right: 10),
+              height: 45,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(3),
+                    topRight: Radius.circular(3),
+                    bottomLeft: Radius.circular(3),
+                    bottomRight: Radius.circular(3)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.3),
+                    spreadRadius: 3,
+                    blurRadius: 5,
+                    offset: const Offset(0, 3),
+                  ),
+                ],
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  IconButton(
+                      icon: const Icon(Icons.search),
+                      onPressed: () {
+                        submitCityName(context, cityEditController.text);
+                        setState(() => isVisible = !isVisible);
+                      }),
+                  const SizedBox(width: 10),
+                  Expanded(
+                      child: TextField(
+                          controller: cityEditController,
+                          decoration: const InputDecoration.collapsed(
+                              hintText: "Enter City"),
+                          onSubmitted: (String city) {
+                            submitCityName(context, city);
+                            setState(() => isVisible = !isVisible);
+                          })),
+                ],
+              )),
+        const SizedBox(height: 20),
+        if (isVisible)
+          ElevatedButton(
+            onPressed: () {
+              submitCityName(context, cityEditController.text);
+              setState(() {
+                isVisible = !isVisible;
+                pressed = !pressed;
+                notPressed = !notPressed;
+              });
+            },
+            child: pressed
+                ? const Text('Try another city')
+                : const Text('Confirm'),
+            style: ElevatedButton.styleFrom(
+              primary: Colors.grey,
+              onPrimary: Colors.white,
+              shadowColor: Colors.blueGrey,
+              elevation: 3,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5.0)),
+              minimumSize: const Size(160, 40),
+              maximumSize: const Size(180, 50),
+            ),
+          ),
+        const SizedBox(height: 20),
+      ],
+    );
+  }
+}
