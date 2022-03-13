@@ -8,6 +8,7 @@ import '../main.dart';
 import 'widgets/city_information_widget.dart';
 import 'widgets/city_entry_widget.dart';
 import 'widgets/daily_summary_widget.dart';
+import 'widgets/forecast_data_table.dart';
 import 'widgets/gradient_container_widget.dart';
 import 'widgets/indicator_widget.dart';
 import 'widgets/last_update_widget.dart';
@@ -249,6 +250,7 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                const ForecastDataTableModel(),
                 const SizedBox(height: 40),
                 BlocBuilder<WeatherCubit, WeatherState>(
                     builder: (context, state) {
