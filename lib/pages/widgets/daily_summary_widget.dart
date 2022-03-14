@@ -27,7 +27,7 @@ class DailySummaryWidget extends StatelessWidget {
                         fontSize: 18,
                         color: Colors.white,
                         fontWeight: FontWeight.w300)),
-                Text(weather.temp,
+                Text(weather.temp.toString() + '°',
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                         fontSize: 20,

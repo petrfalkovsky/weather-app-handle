@@ -17,7 +17,7 @@ enum WeatherCondition {
 class Weather {
   WeatherCondition condition;
   final String description;
-  final String temp;
+  final int temp;
   final String feelLikeTemp;
   final int cloudiness;
   final String date;
@@ -42,8 +42,10 @@ class Weather {
         condition: mapStringToWeatherCondition(weather['main'], cloudiness),
         description: weather['description'].toString().capitalize(),
         cloudiness: cloudiness,
-        temp:
-            '${formatTemperature(TempConverter.kelvinToCelsius(double.parse(daily['temp']['day'].toString())))}°',
+        temp: TempConverter.kelvinToCelsius(
+                double.parse(daily['temp']['day'].toString()))
+            .round(),
+        // '${formatTemperature(TempConverter.kelvinToCelsius(double.parse(daily['temp']['day'].toString())))}°',
         date: DateFormat('d EEE')
             .format(DateTime.fromMillisecondsSinceEpoch(daily['dt'] * 1000)),
         sunrise: DateFormat.jm().format(

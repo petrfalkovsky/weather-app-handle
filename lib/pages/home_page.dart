@@ -147,6 +147,11 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget buildDailySummary(List<Weather> dailyForecast) {
+    dailyForecast.sort(
+      (a, b) => a.temp.compareTo(b.temp),
+    );
+    // dailyForecast = dailyForecast.reversed.toList(); // если понадобится отсортировать от большего к меньшему
+
     return Container(
         height: 120,
         padding: const EdgeInsets.symmetric(horizontal: 10),
