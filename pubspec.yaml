@@ -18,6 +18,8 @@ dependencies:
   flutter_bloc: ^7.3.0
   get_it: ^7.2.0
   mockito: ^5.0.16
+  
+  flare_flutter: ^3.0.2
 
   cupertino_icons: ^1.0.2
 
