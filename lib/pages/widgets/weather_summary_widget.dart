@@ -11,7 +11,7 @@ class WeatherSummaryWidget extends StatelessWidget {
       : super(key: key);
 
   final WeatherCondition condition;
-  final String temp;
+  final int temp;
   final String feelsLike;
   final String date;
 
@@ -28,7 +28,7 @@ class WeatherSummaryWidget extends StatelessWidget {
         Column(
           children: [
             Text(
-              temp,
+              temp.toString() + '°',
               style: const TextStyle(
                 fontSize: 50,
                 color: Colors.white,

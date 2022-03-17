@@ -1,7 +1,8 @@
 name: weather_app_cubit_friflex_test_task
 description: Аппка для тестового задания в Friflex (версия 2)
 
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+# Remove this line if you wish to publish to pub.dev
+publish_to: 'none' 
 
 version: 1.0.0+1
 
@@ -14,16 +15,17 @@ dependencies:
 
   http: ^0.13.4
   intl: ^0.17.0
-  flutter_bloc: ^7.3.0
+  flutter_bloc: ^8.0.1
   get_it: ^7.2.0
   mockito: ^5.0.16
+  
+  flare_flutter: ^3.0.2
 
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  bloc_test: ^8.3.0
 
   flutter_lints: ^1.0.0
 

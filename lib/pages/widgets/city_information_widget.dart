@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app_cubit_friflex_test_task/cubit/favourite_cubit.dart';
 
 class CityInformationWidget extends StatefulWidget {
   const CityInformationWidget(
@@ -32,24 +30,7 @@ class _CityInformationWidgetState extends State<CityInformationWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-        Container(
-            padding: const EdgeInsets.only(right: 5),
-            child: IconButton(
-              onPressed: () {
-                isFavourite
-                    ? BlocProvider.of<FavouriteCubit>(context)
-                        .deleteFavorite(widget.city)
-                    : BlocProvider.of<FavouriteCubit>(context)
-                        .addFavorite(widget.city);
-                setState(() {
-                  isFavourite ? isFavourite = false : isFavourite = true;
-                });
-              },
-              icon: Icon(isFavourite ? Icons.favorite : Icons.favorite_border,
-                  color: Colors.white),
-            ))
-      ]),
+      Row(mainAxisAlignment: MainAxisAlignment.end, children: const []),
       Text(widget.city.toUpperCase(),
           style: const TextStyle(
             fontSize: 50,

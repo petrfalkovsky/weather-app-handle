@@ -126,6 +126,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget buildColumnWithData() {
     return Column(children: [
+      const SizedBox(height: 40),
       CityInformationWidget(
           city: _forecast!.city,
           sunrise: _forecast!.sunrise,
@@ -146,6 +147,11 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget buildDailySummary(List<Weather> dailyForecast) {
+    dailyForecast.sort(
+      (a, b) => a.temp.compareTo(b.temp),
+    );
+    // dailyForecast = dailyForecast.reversed.toList(); // если понадобится отсортировать от большего к меньшему
+
     return Container(
         height: 120,
         padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -221,27 +227,28 @@ class _HomePageState extends State<HomePage> {
     return showModalBottomSheet(
       context: context,
       isScrollControlled: true,
-      backgroundColor: Colors.grey,
+      backgroundColor: Colors.blueGrey.shade800,
       builder: (context) => Container(
-        height: MediaQuery.of(context).size.height * 1,
-        decoration: const BoxDecoration(
-          color: Colors.grey,
+        height: MediaQuery.of(context).size.height * 0.97,
+        decoration: BoxDecoration(
+          color: Colors.blueGrey.shade800,
         ),
         child: Scaffold(
-          backgroundColor: Colors.grey,
+          backgroundColor: Colors.blueGrey.shade800,
           appBar: AppBar(
+            foregroundColor: Colors.blueGrey.shade800,
+            backgroundColor: Colors.blueGrey.shade800,
             title: const Text(
               '3 DAY FORECAST',
               style: TextStyle(color: Colors.white),
             ),
             leading: IconButton(
-              icon: const Icon(Icons.arrow_back_ios),
+              icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
               onPressed: () => Navigator.of(context).pop(),
             ),
             shape: const RoundedRectangleBorder(
                 borderRadius:
-                    BorderRadius.vertical(bottom: Radius.circular(20))),
-            backgroundColor: Colors.grey,
+                    BorderRadius.vertical(bottom: Radius.circular(0))),
             toolbarHeight: 70,
             elevation: 10,
           ),

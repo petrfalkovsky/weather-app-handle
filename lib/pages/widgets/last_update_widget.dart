@@ -13,14 +13,14 @@ class LastUpdatedWidget extends StatelessWidget {
         child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
           const Icon(
             Icons.access_time,
-            color: Colors.black45,
+            color: Colors.white38,
             size: 15,
           ),
           const SizedBox(width: 10),
           Text('Last updated on ${lastUpdatedOn.format(context)}',
               style: const TextStyle(
                 fontSize: 16,
-                color: Colors.black45,
+                color: Colors.white38,
               ))
         ]));
   }

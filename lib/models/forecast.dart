@@ -57,8 +57,10 @@ class Forecast {
 
     var currentForcast = Weather(
         cloudiness: int.parse(json['current']['clouds'].toString()),
-        temp:
-            '${Weather.formatTemperature(TempConverter.kelvinToCelsius(double.parse(json['current']['temp'].toString())))}°',
+        temp: TempConverter.kelvinToCelsius(
+                double.parse(json['current']['temp'].toString()))
+            .round(),
+        // '${Weather.formatTemperature(TempConverter.kelvinToCelsius(double.parse(json['current']['temp'].toString())))}°',
         condition: Weather.mapStringToWeatherCondition(
             weather['main'], int.parse(json['current']['clouds'].toString())),
         description: weather['description'].toString().capitalize(),

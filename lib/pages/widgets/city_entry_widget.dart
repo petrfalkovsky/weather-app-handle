@@ -1,3 +1,4 @@
+import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app_cubit_friflex_test_task/cubit/weather_cubit.dart';
@@ -77,7 +78,7 @@ class _CityEntryWidgetState extends State<CityEntryWidget> {
                           })),
                 ],
               )),
-        const SizedBox(height: 20),
+        const SizedBox(height: 40),
         if (isVisible)
           ElevatedButton(
             onPressed: () {
@@ -102,7 +103,15 @@ class _CityEntryWidgetState extends State<CityEntryWidget> {
               maximumSize: const Size(180, 50),
             ),
           ),
-        const SizedBox(height: 20),
+        if (isVisible)
+          const SizedBox(
+              child: FlareActor(
+                "assets/images/WorldSpin.flr",
+                fit: BoxFit.contain,
+                animation: "roll",
+              ),
+              height: 400,
+              width: 400),
       ],
     );
   }
