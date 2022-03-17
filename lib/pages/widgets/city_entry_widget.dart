@@ -78,7 +78,7 @@ class _CityEntryWidgetState extends State<CityEntryWidget> {
                           })),
                 ],
               )),
-        const SizedBox(height: 20),
+        const SizedBox(height: 40),
         if (isVisible)
           ElevatedButton(
             onPressed: () {
