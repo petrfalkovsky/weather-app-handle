@@ -1,3 +1,4 @@
+// модель для широты и долготы
 class Location {
   final double longitude;
   final double latitude;

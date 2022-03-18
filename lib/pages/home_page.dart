@@ -127,30 +127,36 @@ class _HomePageState extends State<HomePage> {
   Widget buildColumnWithData() {
     return Column(children: [
       const SizedBox(height: 40),
+      // виджет выводит  название города время восхода и заката на стартовом
       CityInformationWidget(
-          city: _forecast!.city,
-          sunrise: _forecast!.sunrise,
-          sunset: _forecast!.sunset,
-          isFavourite: _forecast!.isFavourite),
+        city: _forecast!.city,
+        sunrise: _forecast!.sunrise,
+        sunset: _forecast!.sunset,
+      ),
       const SizedBox(height: 40),
+      // виджет выводит дату, ясность, температуру, чувствуется как
       WeatherSummaryWidget(
           date: _forecast!.date,
           condition: _forecast!.current.condition,
           temp: _forecast!.current.temp,
           feelsLike: _forecast!.current.feelLikeTemp),
       const SizedBox(height: 20),
+      // вывод видимость, чистое небо там и все такое
       WeatherDescriptionWidget(
           weatherDescription: _forecast!.current.description),
       const SizedBox(height: 40),
+      // выводит, когда был запрос
       LastUpdatedWidget(lastUpdatedOn: _forecast!.lastUpdated)
     ]);
   }
 
+// виджет 3-х дневного форкаста
   Widget buildDailySummary(List<Weather> dailyForecast) {
     dailyForecast.sort(
       (a, b) => a.temp.compareTo(b.temp),
     );
-    // dailyForecast = dailyForecast.reversed.toList(); // если понадобится отсортировать от большего к меньшему
+    // если понадобится отсортировать от большего к меньшему (перевернуть лист)
+    // dailyForecast = dailyForecast.reversed.toList();
 
     return Container(
         height: 120,
@@ -171,7 +177,9 @@ class _HomePageState extends State<HomePage> {
                     _refreshCompleter = Completer();
                     refreshWeather(_forecast!);
                   },
-                  child: DailySummaryWidget(weather: dailyForecast[index]));
+                  child:
+                      // виджет 3-х дневного форкаста
+                      DailySummaryWidget(weather: dailyForecast[index]));
             }));
   }
 
@@ -182,11 +190,12 @@ class _HomePageState extends State<HomePage> {
       });
       return _refreshCompleter!.future;
     } else {
-      return BlocProvider.of<WeatherCubit>(context)
-          .getWeather(forecast.city, forecast.isFavourite);
+      return BlocProvider.of<WeatherCubit>(context).getWeather(forecast.city);
     }
   }
 
+// меняет цвет бекграунда, в зависимости по модельке WeatherCondition в weather.dart
+  /// работает нестабильно, надо поправить, если не забуду
   GradientContainerWidget _buildGradientContainer(
       WeatherCondition condition, bool isDayTime, Widget child) {
     GradientContainerWidget container;
@@ -223,6 +232,7 @@ class _HomePageState extends State<HomePage> {
     return container;
   }
 
+// модальное окно, мой чит, чтобы не делать второй экран =)
   Future<dynamic> buildShowModalBottomSheet(BuildContext context) {
     return showModalBottomSheet(
       context: context,
@@ -257,12 +267,17 @@ class _HomePageState extends State<HomePage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(height: 40),
+
+                // кьюбит погоды
                 BlocBuilder<WeatherCubit, WeatherState>(
                     builder: (context, state) {
                   if (state is WeatherInitial) {
+                    // выводим сообщение
                     return buildMessageText(state.message);
                   } else if (state is WeatherLoading) {
+                    // выводим индикатор загрузки - Пожалуйста, подождите
                     return const IndicatorWidget();
+                    // иначе выводим
                   } else if (state is WeatherLoaded) {
                     if (!isSelectedDate) {
                       _forecast = state.forecast;

@@ -1,5 +1,6 @@
 part of 'weather_cubit.dart';
 
+// абстрактный класс неизменного состонияя виджета погоды
 @immutable
 abstract class WeatherState {}
 

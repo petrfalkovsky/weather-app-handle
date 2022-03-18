@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// выводит, когда был запрос
 class LastUpdatedWidget extends StatelessWidget {
   const LastUpdatedWidget({Key? key, required this.lastUpdatedOn})
       : super(key: key);

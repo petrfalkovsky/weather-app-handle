@@ -14,7 +14,6 @@ class Forecast {
   String sunset;
   String sunrise;
   String date;
-  bool isFavourite = false;
 
   Forecast(
       {required this.lastUpdated,

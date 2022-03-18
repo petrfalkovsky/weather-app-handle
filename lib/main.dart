@@ -31,7 +31,7 @@ class AppView extends StatelessWidget {
             providers: [
               BlocProvider(
                 create: (BuildContext context) =>
-                    WeatherCubit(injector.get<IRepository>()),
+                    WeatherCubit(injector.get<AstractRepository>()),
               ),
             ],
             child: const MaterialApp(

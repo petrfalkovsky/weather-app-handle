@@ -3,6 +3,7 @@ import 'package:weather_app_cubit_friflex_test_task/services/repository.dart';
 import 'package:weather_app_cubit_friflex_test_task/services/weather_api.dart';
 import 'package:http/http.dart' as http;
 
+// сервис локатор
 GetIt injector = GetIt.instance;
 
 Future<void> initializeDependency() async {
@@ -11,6 +12,6 @@ Future<void> initializeDependency() async {
   injector
       .registerSingleton<IWeatherApi>(WeatherApi(injector.get<http.Client>()));
 
-  injector
-      .registerSingleton<IRepository>(Repository(injector.get<IWeatherApi>()));
+  injector.registerSingleton<AstractRepository>(
+      Repository(injector.get<IWeatherApi>()));
 }

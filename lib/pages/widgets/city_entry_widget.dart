@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app_cubit_friflex_test_task/cubit/weather_cubit.dart';
 
+// виджет для формы ввода города
 class CityEntryWidget extends StatefulWidget {
   const CityEntryWidget({Key? key, required this.callBackFunction})
       : super(key: key);
@@ -15,6 +16,7 @@ class CityEntryWidget extends StatefulWidget {
 
 class _CityEntryWidgetState extends State<CityEntryWidget> {
   late TextEditingController cityEditController;
+  // isVisible убирает видимость некоторых виджетов после нажатия кнопки Confirm
   bool isVisible = true;
   bool notPressed = false;
   bool pressed = false;
@@ -27,7 +29,7 @@ class _CityEntryWidgetState extends State<CityEntryWidget> {
   }
 
   void submitCityName(BuildContext context, String cityName) {
-    BlocProvider.of<WeatherCubit>(context).getWeather(cityName, false);
+    BlocProvider.of<WeatherCubit>(context).getWeather(cityName);
     widget.callBackFunction();
     cityEditController.text = '';
   }
@@ -90,7 +92,10 @@ class _CityEntryWidgetState extends State<CityEntryWidget> {
               });
             },
             child: pressed
-                ? const Text('Try another city')
+                ? const Text(
+                    'Try another city') // кнопка изменит надпись, после нажатия,
+                // будет видно, если фенукция if (isVisible) для этого блока
+                // будет отключена
                 : const Text('Confirm'),
             style: ElevatedButton.styleFrom(
               primary: Colors.grey,
@@ -104,6 +109,7 @@ class _CityEntryWidgetState extends State<CityEntryWidget> {
             ),
           ),
         if (isVisible)
+          // анимационная картинка на стартовом экране
           const SizedBox(
               child: FlareActor(
                 "assets/images/WorldSpin.flr",
