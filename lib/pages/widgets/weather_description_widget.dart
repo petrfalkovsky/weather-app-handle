@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// вывод видимость, чистое небо там и все такое
 class WeatherDescriptionWidget extends StatelessWidget {
   const WeatherDescriptionWidget({Key? key, required this.weatherDescription})
       : super(key: key);

@@ -1,32 +1,23 @@
 import 'package:flutter/material.dart';
 
+// виджет выводит  название города время восхода и заката на стартовом
 class CityInformationWidget extends StatefulWidget {
-  const CityInformationWidget(
-      {Key? key,
-      required this.city,
-      required this.sunrise,
-      required this.sunset,
-      required this.isFavourite})
-      : super(key: key);
+  const CityInformationWidget({
+    Key? key,
+    required this.city,
+    required this.sunrise,
+    required this.sunset,
+  }) : super(key: key);
 
   final String city;
   final String sunset;
   final String sunrise;
-  final bool isFavourite;
 
   @override
   _CityInformationWidgetState createState() => _CityInformationWidgetState();
 }
 
 class _CityInformationWidgetState extends State<CityInformationWidget> {
-  bool isFavourite = false;
-
-  @override
-  void initState() {
-    isFavourite = widget.isFavourite;
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Column(children: [

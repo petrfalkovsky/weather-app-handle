@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// индикатор загрузки - Пожалуйста, подождите во время загрузки
 class IndicatorWidget extends StatelessWidget {
   const IndicatorWidget({Key? key}) : super(key: key);
 

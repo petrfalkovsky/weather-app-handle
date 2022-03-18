@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// контейнер с градиентом
 class GradientContainerWidget extends StatelessWidget {
   const GradientContainerWidget(
       {Key? key, required this.color, required this.child})

@@ -1,3 +1,4 @@
+// утилита для работы с вводимым текстом в форме
 extension StringExtension on String {
   String capitalize() {
     String result = '';

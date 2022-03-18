@@ -45,7 +45,6 @@ class Weather {
         temp: TempConverter.kelvinToCelsius(
                 double.parse(daily['temp']['day'].toString()))
             .round(),
-        // '${formatTemperature(TempConverter.kelvinToCelsius(double.parse(daily['temp']['day'].toString())))}°',
         date: DateFormat('d EEE')
             .format(DateTime.fromMillisecondsSinceEpoch(daily['dt'] * 1000)),
         sunrise: DateFormat.jm().format(
