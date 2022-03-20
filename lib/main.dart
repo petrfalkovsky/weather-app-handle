@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'cubit/weather_cubit.dart';
 import 'di/initialize_dependency.dart';
-import 'pages/home_page.dart';
+import 'ui/home_page.dart';
 import 'services/repository.dart';
 
 void main() {
