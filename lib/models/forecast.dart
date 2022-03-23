@@ -49,9 +49,6 @@ class Forecast {
           .skip(1)
           .take(3)
           .toList();
-
-      // items.toSet();
-      // items.sort();
     }
 
     var currentForcast = Weather(
@@ -59,12 +56,13 @@ class Forecast {
         temp: TempConverter.kelvinToCelsius(
                 double.parse(json['current']['temp'].toString()))
             .round(),
-        // '${Weather.formatTemperature(TempConverter.kelvinToCelsius(double.parse(json['current']['temp'].toString())))}°',
         condition: Weather.mapStringToWeatherCondition(
             weather['main'], int.parse(json['current']['clouds'].toString())),
         description: weather['description'].toString().capitalize(),
-        feelLikeTemp:
-            '${Weather.formatTemperature(TempConverter.kelvinToCelsius(double.parse(json['current']['feels_like'].toString())))}°',
+        windSpeed:
+            '${double.parse(json['current']['wind_speed'].toString()).round()} m/s',
+        humidity:
+            '${int.parse(json['current']['humidity'].toString()).round()}%',
         date: DateFormat('d EEE').format(date),
         sunrise: DateFormat.jm().format(sunrise),
         sunset: DateFormat.jm().format(sunset));
