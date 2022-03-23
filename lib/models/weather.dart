@@ -18,7 +18,8 @@ class Weather {
   WeatherCondition condition;
   final String description;
   final int temp;
-  final String feelLikeTemp;
+  final String windSpeed;
+  final String humidity;
   final int cloudiness;
   final String date;
   final String sunrise;
@@ -28,7 +29,8 @@ class Weather {
       {required this.condition,
       required this.description,
       required this.temp,
-      required this.feelLikeTemp,
+      required this.windSpeed,
+      required this.humidity,
       required this.cloudiness,
       required this.date,
       required this.sunrise,
@@ -51,8 +53,8 @@ class Weather {
             DateTime.fromMillisecondsSinceEpoch(daily['sunrise'] * 1000)),
         sunset: DateFormat.jm().format(
             DateTime.fromMillisecondsSinceEpoch(daily['sunset'] * 1000)),
-        feelLikeTemp:
-            '${formatTemperature(TempConverter.kelvinToCelsius(double.parse(daily['feels_like']['day'].toString())))}°');
+        windSpeed: '',
+        humidity: '');
   }
 
   static String formatTemperature(double t) {

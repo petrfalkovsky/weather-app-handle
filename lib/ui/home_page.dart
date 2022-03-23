@@ -136,17 +136,19 @@ class _HomePageState extends State<HomePage> {
       const SizedBox(height: 40),
       // виджет выводит дату, ясность, температуру, чувствуется как
       WeatherSummaryWidget(
-          date: _forecast!.date,
-          condition: _forecast!.current.condition,
-          temp: _forecast!.current.temp,
-          feelsLike: _forecast!.current.feelLikeTemp),
+        date: _forecast!.date,
+        condition: _forecast!.current.condition,
+        temp: _forecast!.current.temp,
+        windSpeed: _forecast!.current.windSpeed,
+        humidity: _forecast!.current.humidity,
+      ),
       const SizedBox(height: 20),
       // вывод видимость, чистое небо там и все такое
       WeatherDescriptionWidget(
           weatherDescription: _forecast!.current.description),
       const SizedBox(height: 40),
       // выводит, когда был запрос
-      LastUpdatedWidget(lastUpdatedOn: _forecast!.lastUpdated)
+      LastUpdatedWidget(lastUpdatedOn: _forecast!.lastUpdated),
     ]);
   }
 

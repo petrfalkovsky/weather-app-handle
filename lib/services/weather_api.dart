@@ -40,4 +40,3 @@ class WeatherApi extends IWeatherApi {
     return Forecast.fromJson(jsonDecode(response.body));
   }
 }
-

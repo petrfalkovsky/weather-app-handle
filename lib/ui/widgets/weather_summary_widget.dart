@@ -3,18 +3,20 @@ import 'package:weather_app_cubit_friflex_test_task/models/weather.dart';
 
 // виджет выводит дату, ясность, температуру, чувствуется как
 class WeatherSummaryWidget extends StatelessWidget {
-  const WeatherSummaryWidget(
-      {Key? key,
-      required this.date,
-      required this.condition,
-      required this.temp,
-      required this.feelsLike})
-      : super(key: key);
+  const WeatherSummaryWidget({
+    Key? key,
+    required this.date,
+    required this.condition,
+    required this.temp,
+    required this.windSpeed,
+    required this.humidity,
+  }) : super(key: key);
 
   final WeatherCondition condition;
   final int temp;
-  final String feelsLike;
+  final String windSpeed;
   final String date;
+  final String humidity;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +39,15 @@ class WeatherSummaryWidget extends StatelessWidget {
               ),
             ),
             Text(
-              'Feels like $feelsLike',
+              'Wind $windSpeed',
+              style: const TextStyle(
+                fontSize: 18,
+                color: Colors.white,
+                fontWeight: FontWeight.w300,
+              ),
+            ),
+            Text(
+              'Humidity $humidity',
               style: const TextStyle(
                 fontSize: 18,
                 color: Colors.white,
