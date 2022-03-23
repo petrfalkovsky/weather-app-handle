@@ -38,3 +38,4 @@ apk можно [скачать по ссылке](https://disk.yandex.ru/d/Ta_Mv
 Запись собеседования, интервью для защиты Flutter Junior (в процессе)
 
 
+https://github.com/petrfalkovsky/weather-app-handle/issues/4
