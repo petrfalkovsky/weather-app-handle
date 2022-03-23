@@ -38,4 +38,3 @@ apk можно [скачать по ссылке](https://disk.yandex.ru/d/Ta_Mv
 Запись собеседования, интервью для защиты Flutter Junior (в процессе)
 
 
-![Uploading weather_app_37_sec.gif…](это гифка, брат)
