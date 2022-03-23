@@ -37,6 +37,8 @@ apk можно [скачать по ссылке](https://disk.yandex.ru/d/Ta_Mv
 Резюме Петра на русском языке [в гугл док](https://docs.google.com/document/d/1CCfJFvgmqnxjfiOAsmCUO2wQwqHyatsAuDBLwni1FnI/edit)
 Запись собеседования, интервью для защиты Flutter Junior (в процессе)
 
+---
+
+
 ![weather_app_37_sec](https://user-images.githubusercontent.com/13994582/159726644-59a11ca2-4a94-47d5-9408-10d53eef1692.gif)
 
-https://github.com/petrfalkovsky/weather-app-handle/issues/4
