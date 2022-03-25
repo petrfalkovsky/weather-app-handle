@@ -41,5 +41,6 @@ https://openweathermap.org/api/hourly-forecast, или любой другой.
 ---
 
 
-![weather_app_37_sec](https://user-images.githubusercontent.com/13994582/159726644-59a11ca2-4a94-47d5-9408-10d53eef1692.gif)
+![weather_app](https://user-images.githubusercontent.com/13994582/160103963-d242fa4c-19d5-4dd9-8e9d-9cbc2b6ede0f.gif)
+
 
