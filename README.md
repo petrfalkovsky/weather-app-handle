@@ -2,7 +2,7 @@
 от компании [Friflex.com](https://friflex.com/) для [Тереньтева Петра](https://spb.hh.ru/applicant/resumes/view?resume=e6244a57ff097f336e0039ed1f744e4162784f)
 
 # Приложение погоды
-используемые технологии: Flutter/Dart, Git, Rest json API
+используемые технологии: Flutter/Dart, Git, Rest json API, bloc
 
 ## Функционал приложения:
 В приложении 3 экрана.
