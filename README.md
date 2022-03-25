@@ -40,7 +40,7 @@ https://openweathermap.org/api/hourly-forecast, или любой другой.
 
 ---
 
+![weater-gif](https://user-images.githubusercontent.com/13994582/160105510-85b7e043-c094-4b8a-972d-a226b72b18f1.gif)
 
-![weather_app](https://user-images.githubusercontent.com/13994582/160103963-d242fa4c-19d5-4dd9-8e9d-9cbc2b6ede0f.gif)
 
 
