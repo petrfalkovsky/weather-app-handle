@@ -30,8 +30,10 @@ class WeatherSummaryWidget extends StatelessWidget {
         _mapWeatherConditionToImage(condition),
         Column(
           children: [
+            // todo создать папку темы и вынести все стили в отдельный конфиг
+            // todo создать файлик локализации и интернационализации по яндексу
             Text(
-              temp.toString() + '°',
+              '$temp°',
               style: const TextStyle(
                 fontSize: 50,
                 color: Colors.white,

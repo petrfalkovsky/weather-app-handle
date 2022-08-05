@@ -30,7 +30,7 @@ class DailySummaryWidget extends StatelessWidget {
                         color: Colors.white,
                         fontWeight: FontWeight.w300)),
                 // текст температуры
-                Text(weather.temp.toString() + '°',
+                Text('${weather.temp}°',
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                         fontSize: 32,

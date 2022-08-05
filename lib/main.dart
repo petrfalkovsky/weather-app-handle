@@ -26,6 +26,8 @@ class AppView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        // todo понять почему не работает дебагмодчекере (пишут, что создатели
+        // todo либы должны привести в соответствие с новой версией флаттера 3.0.1)
         debugShowCheckedModeBanner: false,
         home: MultiBlocProvider(
             providers: [

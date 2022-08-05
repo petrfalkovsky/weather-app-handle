@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:weather_app_cubit_friflex_test_task/models/forecast.dart';
