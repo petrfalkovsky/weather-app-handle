@@ -1,11 +1,11 @@
-import 'package:weather_app_cubit_friflex_test_task/models/forecast.dart';
-import 'package:weather_app_cubit_friflex_test_task/services/weather_api.dart';
+import 'package:weather_app_cubit_friflex_test_task/core/services/weather_api.dart';
+import 'package:weather_app_cubit_friflex_test_task/domain/models/forecast.dart';
 
-abstract class AstractRepository {
+abstract class AbstractRepository {
   Future<Forecast> getWeather(String city);
 }
 
-class Repository extends AstractRepository {
+class Repository extends AbstractRepository {
   final IWeatherApi weatherApi;
   Repository(this.weatherApi);
 
