@@ -25,9 +25,9 @@ class WeatherCubit extends Cubit<WeatherState> {
       if (cityName.isEmpty) {
         emit(WeatherError("Please enter city name."));
       } else if (_.toString().contains('error retrieving location for city')) {
-        emit(WeatherError("City not found."));
+        emit(WeatherError("City not found, please try another"));
       } else {
-        emit(WeatherError("Network error, please try again"));
+        emit(WeatherError("Error getting data."));
       }
     }
   }
