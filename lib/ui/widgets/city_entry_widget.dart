@@ -1,7 +1,9 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app_cubit_friflex_test_task/cubit/weather_cubit.dart';
+import 'package:weather_app_cubit_friflex_test_task/logic/cubit/weather_cubit.dart';
 
 // виджет для формы ввода города
 class CityEntryWidget extends StatefulWidget {
@@ -91,12 +93,6 @@ class _CityEntryWidgetState extends State<CityEntryWidget> {
                 notPressed = !notPressed;
               });
             },
-            child: pressed
-                ? const Text(
-                    'Try another city') // кнопка изменит надпись, после нажатия,
-                // будет видно, если фенукция if (isVisible) для этого блока
-                // будет отключена
-                : const Text('Confirm'),
             style: ElevatedButton.styleFrom(
               primary: Colors.grey,
               onPrimary: Colors.white,
@@ -107,17 +103,23 @@ class _CityEntryWidgetState extends State<CityEntryWidget> {
               minimumSize: const Size(160, 40),
               maximumSize: const Size(180, 50),
             ),
+            child: pressed
+                ? const Text(
+                    'Try another city') // кнопка изменит надпись, после нажатия,
+                // будет видно, если фенукция if (isVisible) для этого блока
+                // будет отключена
+                : const Text('Confirm'),
           ),
         if (isVisible)
           // анимационная картинка на стартовом экране
           const SizedBox(
+              height: 400,
+              width: 400,
               child: FlareActor(
                 "assets/images/WorldSpin.flr",
                 fit: BoxFit.contain,
                 animation: "roll",
-              ),
-              height: 400,
-              width: 400),
+              )),
       ],
     );
   }

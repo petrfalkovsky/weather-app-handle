@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app_cubit_friflex_test_task/models/weather.dart';
+import 'package:weather_app_cubit_friflex_test_task/domain//models/weather.dart';
 
 // виджет выводит дату, ясность, температуру, чувствуется как
 class WeatherSummaryWidget extends StatelessWidget {
@@ -30,8 +30,10 @@ class WeatherSummaryWidget extends StatelessWidget {
         _mapWeatherConditionToImage(condition),
         Column(
           children: [
+            // todo создать папку темы и вынести все стили в отдельный конфиг
+            // todo создать файлик локализации и интернационализации по яндексу
             Text(
-              temp.toString() + '°',
+              '$temp°',
               style: const TextStyle(
                 fontSize: 50,
                 color: Colors.white,

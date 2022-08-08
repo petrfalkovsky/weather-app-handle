@@ -1,9 +1,11 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app_cubit_friflex_test_task/cubit/weather_cubit.dart';
-import 'package:weather_app_cubit_friflex_test_task/models/forecast.dart';
-import 'package:weather_app_cubit_friflex_test_task/models/weather.dart';
+import 'package:weather_app_cubit_friflex_test_task/logic/cubit/weather_cubit.dart';
+import 'package:weather_app_cubit_friflex_test_task/domain//models/forecast.dart';
+import 'package:weather_app_cubit_friflex_test_task/domain//models/weather.dart';
 import '../main.dart';
 import 'widgets/city_information_widget.dart';
 import 'widgets/city_entry_widget.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:weather_app_cubit_friflex_test_task/models/weather.dart';
+import 'package:weather_app_cubit_friflex_test_task/domain//models/weather.dart';
 
 // виджет 3-х дневного форкаста
 class DailySummaryWidget extends StatelessWidget {
@@ -30,7 +30,7 @@ class DailySummaryWidget extends StatelessWidget {
                         color: Colors.white,
                         fontWeight: FontWeight.w300)),
                 // текст температуры
-                Text(weather.temp.toString() + '°',
+                Text('${weather.temp}°',
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                         fontSize: 32,

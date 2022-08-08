@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'cubit/weather_cubit.dart';
-import 'di/initialize_dependency.dart';
+import 'core/services/repository.dart';
+import 'core/utils/di/initialize_dependency.dart';
+import 'logic/cubit/weather_cubit.dart';
 import 'ui/home_page.dart';
-import 'services/repository.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,12 +26,14 @@ class AppView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        // todo понять почему не работает дебагмодчекере (пишут, что создатели
+        // todo либы должны привести в соответствие с новой версией флаттера 3.0.1)
         debugShowCheckedModeBanner: false,
         home: MultiBlocProvider(
             providers: [
               BlocProvider(
                 create: (BuildContext context) =>
-                    WeatherCubit(injector.get<AstractRepository>()),
+                    WeatherCubit(injector.get<AbstractRepository>()),
               ),
             ],
             child: const MaterialApp(
