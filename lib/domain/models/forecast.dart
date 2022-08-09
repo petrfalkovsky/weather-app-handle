@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:weather_app_cubit_friflex_test_task/core/utils/extensions.dart';
-import 'package:weather_app_cubit_friflex_test_task/core/utils/temp_converter.dart';
+import 'package:weather_app_cubit_friflex_test_task/utils/extensions.dart';
+import 'package:weather_app_cubit_friflex_test_task/utils/temp_converter.dart';
 
 import 'weather.dart';
 
