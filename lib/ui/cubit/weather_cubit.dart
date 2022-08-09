@@ -3,7 +3,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:weather_app_cubit_friflex_test_task/models/forecast.dart';
-import 'package:weather_app_cubit_friflex_test_task/services/repository.dart';
+import 'package:weather_app_cubit_friflex_test_task/core/services/repository.dart';
 
 part 'weather_state.dart';
 

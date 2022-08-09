@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app_cubit_friflex_test_task/cubit/weather_cubit.dart';
+import 'package:weather_app_cubit_friflex_test_task/ui/cubit/weather_cubit.dart';
 import 'package:weather_app_cubit_friflex_test_task/models/forecast.dart';
 import 'package:weather_app_cubit_friflex_test_task/models/weather.dart';
 import '../main.dart';

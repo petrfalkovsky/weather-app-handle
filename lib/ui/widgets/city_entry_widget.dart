@@ -3,7 +3,7 @@
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app_cubit_friflex_test_task/cubit/weather_cubit.dart';
+import 'package:weather_app_cubit_friflex_test_task/ui/cubit/weather_cubit.dart';
 
 // виджет для формы ввода города
 class CityEntryWidget extends StatefulWidget {
