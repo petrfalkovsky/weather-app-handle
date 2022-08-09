@@ -10,12 +10,15 @@ class WeatherDescriptionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-        child: Text(weatherDescription,
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.w300,
-              color: Colors.white,
-            )));
+      child: Text(
+        weatherDescription,
+        textAlign: TextAlign.center,
+        style: const TextStyle(
+          fontSize: 30,
+          fontWeight: FontWeight.w300,
+          color: Colors.white,
+        ),
+      ),
+    );
   }
 }

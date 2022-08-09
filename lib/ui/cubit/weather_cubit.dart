@@ -2,7 +2,7 @@
 
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:weather_app_cubit_friflex_test_task/models/forecast.dart';
+import 'package:weather_app_cubit_friflex_test_task/domain/models/forecast.dart';
 import 'package:weather_app_cubit_friflex_test_task/core/services/repository.dart';
 
 part 'weather_state.dart';
@@ -27,7 +27,8 @@ class WeatherCubit extends Cubit<WeatherState> {
       } else if (_.toString().contains('error retrieving location for city')) {
         emit(WeatherError("City not found."));
       } else {
-        emit(WeatherError("Network error, please try again"));
+        emit(WeatherError(
+            "Error getting data. Network error, please try again"));
       }
     }
   }

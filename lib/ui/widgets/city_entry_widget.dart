@@ -87,11 +87,13 @@ class _CityEntryWidgetState extends State<CityEntryWidget> {
           ElevatedButton(
             onPressed: () {
               submitCityName(context, cityEditController.text);
-              setState(() {
-                isVisible = !isVisible;
-                pressed = !pressed;
-                notPressed = !notPressed;
-              });
+              setState(
+                () {
+                  isVisible = !isVisible;
+                  pressed = !pressed;
+                  notPressed = !notPressed;
+                },
+              );
             },
             style: ElevatedButton.styleFrom(
               primary: Colors.grey,
@@ -104,22 +106,23 @@ class _CityEntryWidgetState extends State<CityEntryWidget> {
               maximumSize: const Size(180, 50),
             ),
             child: pressed
-                ? const Text(
-                    'Try another city') // кнопка изменит надпись, после нажатия,
-                // будет видно, если фенукция if (isVisible) для этого блока
-                // будет отключена
+                ? const Text('Try another city')
+                // кнопка изменит надпись, после нажатия,
+                // будет работать, если функция if (isVisible) будет отключена
+
                 : const Text('Confirm'),
           ),
         if (isVisible)
           // анимационная картинка на стартовом экране
           const SizedBox(
-              height: 400,
-              width: 400,
-              child: FlareActor(
-                "assets/images/WorldSpin.flr",
-                fit: BoxFit.contain,
-                animation: "roll",
-              )),
+            height: 400,
+            width: 400,
+            child: FlareActor(
+              "assets/images/WorldSpin.flr",
+              fit: BoxFit.contain,
+              animation: "roll",
+            ),
+          ),
       ],
     );
   }

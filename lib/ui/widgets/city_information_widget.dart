@@ -30,23 +30,30 @@ class _CityInformationWidgetState extends State<CityInformationWidget> {
             fontWeight: FontWeight.w300,
             color: Colors.white,
           )),
-      Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-        Column(children: [
-          const Text('Sunrise',
-              style: TextStyle(fontSize: 16, color: Colors.white)),
-          const SizedBox(height: 5),
-          Text(widget.sunrise,
-              style: const TextStyle(fontSize: 15, color: Colors.white))
-        ]),
-        const SizedBox(width: 20),
-        Column(children: [
-          const Text('Sunset',
-              style: TextStyle(fontSize: 16, color: Colors.white)),
-          const SizedBox(height: 5),
-          Text(widget.sunset,
-              style: const TextStyle(fontSize: 15, color: Colors.white))
-        ]),
-      ]),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Column(
+            children: [
+              const Text('Sunrise',
+                  style: TextStyle(fontSize: 16, color: Colors.white)),
+              const SizedBox(height: 5),
+              Text(widget.sunrise,
+                  style: const TextStyle(fontSize: 15, color: Colors.white))
+            ],
+          ),
+          const SizedBox(width: 20),
+          Column(
+            children: [
+              const Text('Sunset',
+                  style: TextStyle(fontSize: 16, color: Colors.white)),
+              const SizedBox(height: 5),
+              Text(widget.sunset,
+                  style: const TextStyle(fontSize: 15, color: Colors.white))
+            ],
+          ),
+        ],
+      ),
     ]);
   }
 }

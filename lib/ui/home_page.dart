@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app_cubit_friflex_test_task/ui/cubit/weather_cubit.dart';
-import 'package:weather_app_cubit_friflex_test_task/models/forecast.dart';
-import 'package:weather_app_cubit_friflex_test_task/models/weather.dart';
+import 'package:weather_app_cubit_friflex_test_task/domain/models/forecast.dart';
+import 'package:weather_app_cubit_friflex_test_task/domain/models/weather.dart';
 import '../main.dart';
 import 'widgets/city_information_widget.dart';
 import 'widgets/city_entry_widget.dart';
@@ -127,31 +127,33 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget buildColumnWithData() {
-    return Column(children: [
-      const SizedBox(height: 40),
-      // виджет выводит  название города время восхода и заката на стартовом
-      CityInformationWidget(
-        city: _forecast!.city,
-        sunrise: _forecast!.sunrise,
-        sunset: _forecast!.sunset,
-      ),
-      const SizedBox(height: 40),
-      // виджет выводит дату, ясность, температуру, чувствуется как
-      WeatherSummaryWidget(
-        date: _forecast!.date,
-        condition: _forecast!.current.condition,
-        temp: _forecast!.current.temp,
-        windSpeed: _forecast!.current.windSpeed,
-        humidity: _forecast!.current.humidity,
-      ),
-      const SizedBox(height: 20),
-      // вывод видимость, чистое небо там и все такое
-      WeatherDescriptionWidget(
-          weatherDescription: _forecast!.current.description),
-      const SizedBox(height: 40),
-      // выводит, когда был запрос
-      LastUpdatedWidget(lastUpdatedOn: _forecast!.lastUpdated),
-    ]);
+    return Column(
+      children: [
+        const SizedBox(height: 40),
+        // виджет выводит  название города время восхода и заката на стартовом
+        CityInformationWidget(
+          city: _forecast!.city,
+          sunrise: _forecast!.sunrise,
+          sunset: _forecast!.sunset,
+        ),
+        const SizedBox(height: 40),
+        // виджет выводит дату, ясность, температуру, чувствуется как
+        WeatherSummaryWidget(
+          date: _forecast!.date,
+          condition: _forecast!.current.condition,
+          temp: _forecast!.current.temp,
+          windSpeed: _forecast!.current.windSpeed,
+          humidity: _forecast!.current.humidity,
+        ),
+        const SizedBox(height: 20),
+        // вывод видимость, чистое небо там и все такое
+        WeatherDescriptionWidget(
+            weatherDescription: _forecast!.current.description),
+        const SizedBox(height: 40),
+        // выводит, когда был запрос
+        LastUpdatedWidget(lastUpdatedOn: _forecast!.lastUpdated),
+      ],
+    );
   }
 
 // виджет 3-х дневного форкаста
@@ -163,35 +165,39 @@ class _HomePageState extends State<HomePage> {
     // dailyForecast = dailyForecast.reversed.toList();
 
     return Container(
-        height: 120,
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: ListView.builder(
-            physics: const BouncingScrollPhysics(),
-            scrollDirection: Axis.horizontal,
-            itemCount: dailyForecast.length,
-            itemBuilder: (BuildContext context, int index) {
-              return InkWell(
-                  onTap: () {
-                    isSelectedDate = true;
-                    _forecast!.date = dailyForecast[index].date;
-                    _forecast!.sunrise = dailyForecast[index].sunrise;
-                    _forecast!.sunset = dailyForecast[index].sunset;
-                    _forecast!.current = dailyForecast[index];
-                    _refreshCompleter?.complete();
-                    _refreshCompleter = Completer();
-                    refreshWeather(_forecast!);
-                  },
-                  child:
-                      // виджет 3-х дневного форкаста
-                      DailySummaryWidget(weather: dailyForecast[index]));
-            }));
+      height: 120,
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: ListView.builder(
+        physics: const BouncingScrollPhysics(),
+        scrollDirection: Axis.horizontal,
+        itemCount: dailyForecast.length,
+        itemBuilder: (BuildContext context, int index) {
+          return InkWell(
+              onTap: () {
+                isSelectedDate = true;
+                _forecast!.date = dailyForecast[index].date;
+                _forecast!.sunrise = dailyForecast[index].sunrise;
+                _forecast!.sunset = dailyForecast[index].sunset;
+                _forecast!.current = dailyForecast[index];
+                _refreshCompleter?.complete();
+                _refreshCompleter = Completer();
+                refreshWeather(_forecast!);
+              },
+              child:
+                  // виджет 3-х дневного форкаста
+                  DailySummaryWidget(weather: dailyForecast[index]));
+        },
+      ),
+    );
   }
 
   Future<void> refreshWeather(Forecast forecast) {
     if (isSelectedDate) {
-      setState(() {
-        _forecast = forecast;
-      });
+      setState(
+        () {
+          _forecast = forecast;
+        },
+      );
       return _refreshCompleter!.future;
     } else {
       return BlocProvider.of<WeatherCubit>(context).getWeather(forecast.city);

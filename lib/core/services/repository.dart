@@ -1,4 +1,4 @@
-import 'package:weather_app_cubit_friflex_test_task/models/forecast.dart';
+import 'package:weather_app_cubit_friflex_test_task/domain/models/forecast.dart';
 import 'package:weather_app_cubit_friflex_test_task/core/services/weather_api.dart';
 
 abstract class AstractRepository {
@@ -15,5 +15,3 @@ class Repository extends AstractRepository {
     return await weatherApi.getWeather(location);
   }
 }
-
-class NetworkException implements Exception {}

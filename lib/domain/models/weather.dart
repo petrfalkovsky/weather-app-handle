@@ -58,8 +58,7 @@ class Weather {
   }
 
   static String formatTemperature(double t) {
-    // ignore: unnecessary_null_comparison
-    var temp = (t == null ? '' : t.round().toString());
+    var temp = (t.round().toString());
     return temp;
   }
 

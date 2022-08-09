@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'ui/cubit/weather_cubit.dart';
-import 'di/initialize_dependency.dart';
+import 'core/services/di/initialize_dependency.dart';
 import 'ui/home_page.dart';
 import 'core/services/repository.dart';
 

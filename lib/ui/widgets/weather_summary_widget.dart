@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app_cubit_friflex_test_task/models/weather.dart';
+import 'package:weather_app_cubit_friflex_test_task/domain/models/weather.dart';
 
 // виджет выводит дату, ясность, температуру, чувствуется как
 class WeatherSummaryWidget extends StatelessWidget {

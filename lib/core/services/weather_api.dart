@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:weather_app_cubit_friflex_test_task/models/forecast.dart';
-import 'package:weather_app_cubit_friflex_test_task/models/location.dart';
+import 'package:weather_app_cubit_friflex_test_task/domain/models/forecast.dart';
+import 'package:weather_app_cubit_friflex_test_task/domain/models/location.dart';
 import 'package:weather_app_cubit_friflex_test_task/core/services/constants.dart';
 
 abstract class IWeatherApi {
