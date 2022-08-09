@@ -42,88 +42,97 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.blueGrey.shade800,
-          actions: <Widget>[
-            TextButton.icon(
-              onPressed: () async {
-                isSelectedDate = false;
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const AppView(),
-                  ),
-                );
-              },
-              label: const Text(
-                'ANOTHER CITY',
-                style: TextStyle(color: Colors.white),
-              ),
-              icon: const Icon(
-                Icons.home,
-                color: Colors.white,
-                size: 24.0,
-              ),
+      appBar: AppBar(
+        backgroundColor: Colors.blueGrey.shade800,
+        actions: <Widget>[
+          TextButton.icon(
+            onPressed: () async {
+              isSelectedDate = false;
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const AppView(),
+                ),
+              );
+            },
+            label: const Text(
+              'ANOTHER CITY',
+              style: TextStyle(color: Colors.white),
             ),
-            const Spacer(),
-            TextButton.icon(
-              onPressed: () {
-                buildShowModalBottomSheet(context);
-              },
-              label: const Text(
-                '3 DAY FORECAST',
-                style: TextStyle(color: Colors.white),
-              ),
-              icon: const Icon(
-                Icons.list,
-                color: Colors.white,
-                size: 24.0,
-              ),
+            icon: const Icon(
+              Icons.home,
+              color: Colors.white,
+              size: 24.0,
             ),
-          ],
+          ),
+          const Spacer(),
+          TextButton.icon(
+            onPressed: () {
+              buildShowModalBottomSheet(context);
+            },
+            label: const Text(
+              '3 DAY FORECAST',
+              style: TextStyle(color: Colors.white),
+            ),
+            icon: const Icon(
+              Icons.list,
+              color: Colors.white,
+              size: 24.0,
+            ),
+          ),
+        ],
+      ),
+      body: buildGradientContainer(
+        _forecast == null
+            ? WeatherCondition.clear
+            : _forecast!.current.condition,
+        _forecast == null ? false : _forecast!.isDayTime,
+        SizedBox(
+          height: MediaQuery.of(context).size.height,
+          child: RefreshIndicator(
+            color: Colors.transparent,
+            backgroundColor: Colors.transparent,
+            onRefresh: () => refreshWeather(
+                (BlocProvider.of<WeatherCubit>(context).state as WeatherLoaded)
+                    .forecast),
+            child: ListView(
+              children: <Widget>[
+                BlocBuilder<WeatherCubit, WeatherState>(
+                    builder: (context, state) {
+                  if (state is WeatherInitial) {
+                    return buildMessageText(state.message);
+                  } else if (state is WeatherLoading) {
+                    return const IndicatorWidget();
+                  } else if (state is WeatherLoaded) {
+                    if (!isSelectedDate) {
+                      _forecast = state.forecast;
+                    }
+                    return buildColumnWithData();
+                  } else if (state is WeatherError) {
+                    return buildMessageText(state.message);
+                  } else {
+                    return const IndicatorWidget();
+                  }
+                }),
+                CityEntryWidget(callBackFunction: searchCity),
+              ],
+            ),
+          ),
         ),
-        body: _buildGradientContainer(
-            _forecast == null
-                ? WeatherCondition.clear
-                : _forecast!.current.condition,
-            _forecast == null ? false : _forecast!.isDayTime,
-            SizedBox(
-                height: MediaQuery.of(context).size.height,
-                child: RefreshIndicator(
-                    color: Colors.transparent,
-                    backgroundColor: Colors.transparent,
-                    onRefresh: () => refreshWeather(
-                        (BlocProvider.of<WeatherCubit>(context).state
-                                as WeatherLoaded)
-                            .forecast),
-                    child: ListView(children: <Widget>[
-                      BlocBuilder<WeatherCubit, WeatherState>(
-                          builder: (context, state) {
-                        if (state is WeatherInitial) {
-                          return buildMessageText(state.message);
-                        } else if (state is WeatherLoading) {
-                          return const IndicatorWidget();
-                        } else if (state is WeatherLoaded) {
-                          if (!isSelectedDate) {
-                            _forecast = state.forecast;
-                          }
-                          return buildColumnWithData();
-                        } else if (state is WeatherError) {
-                          return buildMessageText(state.message);
-                        } else {
-                          return const IndicatorWidget();
-                        }
-                      }),
-                      CityEntryWidget(callBackFunction: searchCity),
-                    ])))));
+      ),
+    );
   }
 
   Widget buildMessageText(String message) {
     return Padding(
-        padding: const EdgeInsets.only(top: 30),
-        child: Center(
-            child: Text(message,
-                style: const TextStyle(fontSize: 21, color: Colors.white))));
+      padding: const EdgeInsets.only(top: 30),
+      child: Center(
+        child: Text(
+          message,
+          style: const TextStyle(fontSize: 21, color: Colors.white),
+        ),
+      ),
+    );
   }
 
   Widget buildColumnWithData() {
@@ -202,44 +211,6 @@ class _HomePageState extends State<HomePage> {
     } else {
       return BlocProvider.of<WeatherCubit>(context).getWeather(forecast.city);
     }
-  }
-
-// меняет цвет бекграунда, в зависимости по модельке WeatherCondition в weather.dart
-  /// работает нестабильно, надо поправить, если не забуду
-  GradientContainerWidget _buildGradientContainer(
-      WeatherCondition condition, bool isDayTime, Widget child) {
-    GradientContainerWidget container;
-    if (!isDayTime) {
-      container = GradientContainerWidget(color: Colors.blueGrey, child: child);
-    } else {
-      switch (condition) {
-        case WeatherCondition.clear:
-        case WeatherCondition.lightCloud:
-          container =
-              GradientContainerWidget(color: Colors.yellow, child: child);
-          break;
-        case WeatherCondition.rain:
-        case WeatherCondition.drizzle:
-        case WeatherCondition.mist:
-        case WeatherCondition.heavyCloud:
-          container =
-              GradientContainerWidget(color: Colors.indigo, child: child);
-          break;
-        case WeatherCondition.snow:
-          container =
-              GradientContainerWidget(color: Colors.lightBlue, child: child);
-          break;
-        case WeatherCondition.thunderstorm:
-          container =
-              GradientContainerWidget(color: Colors.deepPurple, child: child);
-          break;
-        default:
-          container =
-              GradientContainerWidget(color: Colors.lightBlue, child: child);
-      }
-    }
-
-    return container;
   }
 
 // модальное окно, мой чит, чтобы не делать второй экран =)

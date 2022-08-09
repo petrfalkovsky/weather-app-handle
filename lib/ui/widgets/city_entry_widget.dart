@@ -1,9 +1,8 @@
 // ignore_for_file: library_private_types_in_public_api
-
-import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app_cubit_friflex_test_task/ui/cubit/weather_cubit.dart';
+import 'package:weather_app_cubit_friflex_test_task/ui/widgets/animated_earth.dart';
 
 // виджет для формы ввода города
 class CityEntryWidget extends StatefulWidget {
@@ -114,15 +113,7 @@ class _CityEntryWidgetState extends State<CityEntryWidget> {
           ),
         if (isVisible)
           // анимационная картинка на стартовом экране
-          const SizedBox(
-            height: 400,
-            width: 400,
-            child: FlareActor(
-              "assets/images/WorldSpin.flr",
-              fit: BoxFit.contain,
-              animation: "roll",
-            ),
-          ),
+          const AninmatedEarthFLRWidget(),
       ],
     );
   }
