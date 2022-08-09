@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'core/services/repository.dart';
-import 'core/utils/di/initialize_dependency.dart';
-import 'logic/cubit/weather_cubit.dart';
+import 'cubit/weather_cubit.dart';
+import 'di/initialize_dependency.dart';
 import 'ui/home_page.dart';
+import 'services/repository.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,7 +33,7 @@ class AppView extends StatelessWidget {
             providers: [
               BlocProvider(
                 create: (BuildContext context) =>
-                    WeatherCubit(injector.get<AbstractRepository>()),
+                    WeatherCubit(injector.get<AstractRepository>()),
               ),
             ],
             child: const MaterialApp(

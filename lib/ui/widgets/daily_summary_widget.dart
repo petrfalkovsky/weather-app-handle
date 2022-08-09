@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:weather_app_cubit_friflex_test_task/domain//models/weather.dart';
+import 'package:weather_app_cubit_friflex_test_task/models/weather.dart';
 
 // виджет 3-х дневного форкаста
 class DailySummaryWidget extends StatelessWidget {
